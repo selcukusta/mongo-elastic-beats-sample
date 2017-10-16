@@ -1,0 +1,15 @@
+metricbeat.config.modules:
+  #https://www.elastic.co/guide/en/beats/metricbeat/master/metricbeat-reference-yml.html
+  # Set to true to enable config reloading
+  reload.enabled: true
+
+metricbeat.modules:  
+- module: mongodb
+  hosts: ["mongodb://mongo:27017"]
+  metricsets: ["dbstats", "status"]
+  enabled: true
+  period: 3s
+
+output.elasticsearch:
+  # Array of hosts to connect to.
+  hosts: ["elastic:9200"]
